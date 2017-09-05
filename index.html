@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Project 01 [प्रोजेक्ट ०१] </title>
+	<style>
+		body {
+			font-family: "Courier New";
+			text-align: center;
+			}
+		div {
+			position: relative;
+			max-width: 425px;
+			height: 500px;
+			border: 2px solid lightgray;
+			margin: auto;
+			box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 6px 20px rgba(0,0,0,0.19);
+			overflow-x: auto;
+			}
+		h1 {
+			}
+		table {
+				border-collapse: collapse;
+				margin: auto;
+				font-size: 18px;
+				font-weight: bold;
+				}
+		td {
+			border: 1px solid gray;
+			padding: 5px;
+			}
+		thead, tfoot {
+						background-color: #ccccff;
+						}
+		input {
+				border-style: none;
+				margin: 0px;
+				font: 16px strong bold;
+				text-align: center;
+				}
+		input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+																						-webkit-appearance: none;
+																						 margin: 0;
+																						}
+		input[type=number] {
+							-moz-appearance: textfield;
+							 margin: 0;
+							}
+		input:focus {
+					background-color: #f2f2f2;
+					border-radius: 7px;
+					}
+		button {
+				margin: 10px;
+				padding: 5px;
+				border: 1px solid gray;
+				background-color: #d9d9d9;
+				}
+		button:hover {
+					border: 1px solid black;
+					background-color: #bfbfbf;
+					}
+		button:active {
+					border: 1px solid white;
+					background-color: #999999;
+					}
+	</style>
+</head>
+<body>
+	<div>
+		<h1> Money Calculator </h1>
+		<table>
+			<thead>
+				<tr>
+					<td> Amount </td>
+					<td> Quantity </td>
+					<td> Total Amount </td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td> 1000 </td>
+					<td><input id="1000" type="number" onkeyup='return isNumberKey(event,1000)'/></td>
+					<td id="3000"> </td>
+				</tr>
+				<tr>
+					<td> 500 </td>
+					<td><input id="500" type="number" onkeyup='return isNumberKey(event,500)'/></td>
+					<td id="1500"> </td>
+				</tr>
+				<tr>
+					<td> 100 </td>
+					<td><input id="100" type="number" onkeyup='return isNumberKey(event,100)'/></td>
+					<td id="300"> </td>
+				</tr>
+				<tr>
+					<td> 50 </td>
+					<td><input id="50" type="number" onkeyup='return isNumberKey(event,50)'/></td>
+					<td id="150"> </td>
+				</tr>
+				<tr>
+					<td> 20 </td>
+					<td><input id="20" type="number" onkeyup='return isNumberKey(event,20)'/></td>
+					<td id="60"> </td>
+				</tr>
+				<tr>
+					<td> 10 </td>
+					<td><input id="10" type="number" onkeyup='return isNumberKey(event,10)'/></td>
+					<td id="30"> </td>
+				</tr>
+				<tr>
+					<td> 5 </td>
+					<td><input id="5" type="number" onkeyup='return isNumberKey(event,5)'/></td>
+					<td id="15"> </td>
+				</tr>
+				<tr>
+					<td> Coins </td>
+					<td><input id="1" type="number" onkeyup='return isNumberKey(event,1)'/></td>
+					<td id="3"> </td>
+				</tr>
+				<tr>
+					<td> Others </td>
+					<td><input id="2"type="number" onkeyup='return isNumberKey(event,2)'/></td>
+					<td id="6"> </td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr>
+					<td colspan="2"> Grand Total </td>
+					<td id="GrandTotal"> </td>
+				</tr>
+			</tfoot>
+		</table>
+		<button onclick="window.location.reload(true)"> Reset to Zero </button>
+			
+	</div>
+</body>
+<script>
+	//document.getElementById("demo").innerHTML = "Go Home"
+	//var inputElement = document.getElementByTagName("input")
+	var x = ["3000", "1500", "300", "150", "60", "30", "15", "3", "6"];
+	function isNumberKey(evt,idNum){
+								var charCode = evt.which ? evt.which : event.keyCode;
+								var i, totalSum = 0;
+								
+								if (charCode > 31 && (charCode < 48 || charCode > 57)) { return false;}
+								else {
+									var value2mul = document.getElementById(idNum).value;
+									var resultID = idNum * 3 ;
+											if (idNum == 2) { idNum = 1;}
+									if (value2mul == "") { document.getElementById(resultID).innerHTML = ""; }
+									else { document.getElementById(resultID).innerHTML = value2mul * idNum ; }
+									for (i = 0; i < 9; i++){
+											var y = document.getElementById(x[i]).innerHTML;
+											if (y == "" || y == undefined){ y = 0; }
+												totalSum = totalSum + Number(y);
+															}
+									document.getElementById("GrandTotal").innerHTML = totalSum;
+									return true;
+									}
+								}
+</script>
+</html>	
